@@ -31,7 +31,7 @@ class ServerValue
   end
 
   def self.all_alive?
-    all_alive.count > 0
+    all_alive.count == all.count
   end
 
   def self.total_current_messages_throughput
