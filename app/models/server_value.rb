@@ -8,6 +8,8 @@ class ServerValue
   field :additional_fields, :type => Hash
   field :updated_at, :type => Fixnum
 
+  index :_id, :background => true, :unique => true
+
   %w(info messages_total messages_throughput additional_fields).each do |m|
     define_method(m) do
       read_attribute(m) || {}
