@@ -10,6 +10,18 @@ class EventsController < ApplicationController
     @event = EventDescription.find_by_id(params[:id])
   end
 
+  def destroy
+    @event = EventDescription.find_by_id(params[:id])
+
+    if @event.destroy
+      flash[:notice] = "Event description has been deleted"
+    else
+      flash[:error] = "Could not delete event description"
+    end
+
+    redirect_to events_path
+  end
+
   def rules
     @event = EventDescription.find_by_id(params[:id])
   end

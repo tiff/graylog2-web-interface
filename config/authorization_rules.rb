@@ -48,7 +48,8 @@ authorization do
       :rules,
       :events,
       :settings,
-      :toggledisabled
+      :toggledisabled,
+      :destroy
     ]
 
     has_permission_on :forwarders, :to => [:create, :destroy]
