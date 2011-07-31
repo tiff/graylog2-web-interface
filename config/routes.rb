@@ -90,6 +90,8 @@ Graylog2WebInterface::Application.routes.draw do
     end
   end
 
+  resources :events
+
   resources :alertedstreams do
     member do
       post :toggle
