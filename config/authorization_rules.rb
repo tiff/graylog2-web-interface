@@ -45,7 +45,10 @@ authorization do
     has_permission_on :events, :to => [
       :index,
       :create,
-      :rules
+      :rules,
+      :events,
+      :settings,
+      :toggledisabled
     ]
 
     has_permission_on :forwarders, :to => [:create, :destroy]

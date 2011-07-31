@@ -1,0 +1,3 @@
+<h1>Settings of event <span class="highlighted"><%= @event.title_possibly_disabled %></span></h1>
+
+<%=raw ajaxtrigger(:disable_event, "Event disabled", toggledisabled_event_path(@event), @event.disabled) %>

@@ -3,6 +3,19 @@ class EventsController < ApplicationController
 
   def index
     @new_event_description = EventDescription.new
+    @events = EventDescription.all
+  end
+
+  def events
+    @event = EventDescription.find_by_id(params[:id])
+  end
+
+  def rules
+    @event = EventDescription.find_by_id(params[:id])
+  end
+
+  def settings
+    @event = EventDescription.find_by_id(params[:id])
   end
 
   def create
@@ -17,8 +30,16 @@ class EventsController < ApplicationController
     end
   end
 
-  def rules
-    @event = EventDescription.find(params[:id])
+  def toggledisabled
+    @event_description = EventDescription.find_by_id(params[:id])
+    if @event_description.disabled.blank?
+      @event_description.disabled = true
+    else
+      @event_description.disabled = !@event_description.disabled
+    end
+    @event_description.save
+
+    render :text => nil
   end
 
 end

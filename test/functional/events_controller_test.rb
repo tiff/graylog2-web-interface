@@ -32,4 +32,29 @@ class EventsControllerTest < ActionController::TestCase
 
   end
 
+  context "enabling and disabling" do
+
+    should "disable an event that has no disabled attribute yet" do
+      ed = EventDescription.make(:disabled => nil)
+      post :toggledisabled, :id => ed.id.to_param
+
+      assert assigns(:event_description).disabled
+    end
+
+    should "disable an event that is enabled" do
+      ed = EventDescription.make(:disabled => false)
+      post :toggledisabled, :id => ed.id.to_param
+
+      assert assigns(:event_description).disabled
+    end
+
+    should "enable an event that is disabled" do
+      ed = EventDescription.make(:disabled => true)
+      post :toggledisabled, :id => ed.id.to_param
+
+      assert !assigns(:event_description).disabled
+    end
+
+  end
+
 end
