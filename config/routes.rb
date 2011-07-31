@@ -94,6 +94,9 @@ Graylog2WebInterface::Application.routes.draw do
     member do
       post :rules
       get :rules
+      get :events
+      get :settings
+      post :toggledisabled
     end
   end
 

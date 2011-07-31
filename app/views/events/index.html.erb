@@ -14,3 +14,23 @@
   <% end %>
 <% end %>
 </div>
+
+<div id="events-events">
+<% @events.each do |event| %>
+  <div id="events-event">
+    <div class="events-event-left">
+      <div class="events-event-count">
+        <span class="events-event-count-number">15</span>
+      </div>
+    </div>
+
+    <div class="events-event-middle">
+      <span class="events-event-title <%= "events-event-title-disabled" if event.disabled %>"><%= link_to(event.title_possibly_disabled, events_event_path(event)) %></span>
+    </div>
+
+    <div class="events-event-right">
+      <span class="events-event-description"><%= event.description.blank? ? "No description" : event.description %></span>
+    </div>
+  </div>
+<% end %>
+</div>

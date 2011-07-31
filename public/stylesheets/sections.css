@@ -766,3 +766,68 @@
   font-family: monospace;
   display: none;
 }
+
+/* Events */
+#events-events {
+  margin-top: 20px;
+}
+
+.events-title {
+  font-size: 28px;
+  font-family: Georgia,"Times New Roman",Times,serif;
+  display: block;
+  padding-bottom: 5px;
+  padding-top: 8px;
+}
+
+#events-event {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 15px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #ccc;
+  height: 16px;
+  clear: both;
+}
+
+.events-event-left {
+  width: 85px;
+  float: left;
+}
+
+.events-event-middle {
+  float: left;
+  padding-right: 15px;
+}
+
+.events-event-right {
+  float: left;
+}
+
+.events-event-title {
+  font-size: 27px;
+  font-family: Georgia,"Times New Roman",Times,serif;
+  display: block;
+}
+
+.events-event-title-disabled a {
+  color: #aaa;
+}
+
+.events-event-description {
+  color: #aaa;
+  display: block;
+  position: relative;
+  top: 5px;
+}
+
+.events-event-count {
+  width: 75px;
+  font-size: 20px;
+  text-align: right;
+}
+
+.events-event-count-number {
+  color: green;
+}

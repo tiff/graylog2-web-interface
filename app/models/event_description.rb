@@ -14,4 +14,13 @@ class EventDescription
     disabled ? title + " (disabled)" : title if title
   end
 
+  def self.find_by_id(_id)
+    _id = $1 if /^([0-9a-f]+)-/ =~ _id
+    first(:conditions => { :_id => BSON::ObjectId(_id)})
+  end
+
+  def to_param
+    title.blank? ? id.to_s : "#{id}-#{title.parameterize}"
+  end
+
 end
