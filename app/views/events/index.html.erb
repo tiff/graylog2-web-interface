@@ -1,0 +1,16 @@
+<h1>Events</h1>
+
+<div class="description">
+  Fancy description.
+</div>
+
+
+<div id="events-new-event">
+<% permitted_to? :create, :events do %>
+  <%= form_for @new_event_description, :url => events_path do |f| %>
+    <%= f.label :title, "Title:" %>
+    <%= f.text_field :title %>
+    <%= awesome_submit_link "Describe new event" %>
+  <% end %>
+<% end %>
+</div>
