@@ -42,6 +42,10 @@ authorization do
     has_permission_on :streamrules, :to => [:create, :destroy]
     has_permission_on :streamcategories, :to => [:create, :destroy]
 
+    has_permission_on :events, :to => [
+      :index
+    ]
+
     has_permission_on :forwarders, :to => [:create, :destroy]
 
     has_permission_on :analytics, :to => [:index, :shell]
