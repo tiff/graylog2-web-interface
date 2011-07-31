@@ -45,3 +45,7 @@ end
 HostgroupHost.blueprint do
   hostname { host }
 end
+
+EventDescription.blueprint do
+  title
+end
