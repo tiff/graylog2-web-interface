@@ -32,6 +32,18 @@ class EventsControllerTest < ActionController::TestCase
 
   end
 
+  context "deleting" do
+
+    should "delete a stream" do
+      ed = EventDescription.make
+
+      assert_difference('EventDescription.count', -1) do
+        delete :destroy, :id => ed.id.to_param
+      end
+    end
+
+  end
+
   context "enabling and disabling" do
 
     should "disable an event that has no disabled attribute yet" do

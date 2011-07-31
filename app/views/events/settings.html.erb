@@ -1,3 +1,5 @@
 <h1>Settings of event <span class="highlighted"><%= @event.title_possibly_disabled %></span></h1>
 
 <%=raw ajaxtrigger(:disable_event, "Event disabled", toggledisabled_event_path(@event), @event.disabled) %>
+
+<%= awesome_link "Delete this event description", event_path(@event.id), :confirm => "Really delete this event description with all its events?", :method => :delete %>
