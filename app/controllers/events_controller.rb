@@ -8,6 +8,7 @@ class EventsController < ApplicationController
 
   def events
     @event = EventDescription.find_by_id(params[:id])
+    @has_sidebar = true
   end
 
   def destroy
