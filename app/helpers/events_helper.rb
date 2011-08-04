@@ -11,4 +11,5 @@ module EventsHelper
 
     return tabs
   end
+
 end
