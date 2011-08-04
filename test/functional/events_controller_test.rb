@@ -69,4 +69,16 @@ class EventsControllerTest < ActionController::TestCase
 
   end
 
+  context "renaming" do
+    should "reaname an event" do
+      new_title = "new title"
+      ed = EventDescription.make(:title => "ZOMG EVENT")
+      post :rename, :id => ed.id.to_param, :title => new_title
+
+      assert_equal new_title, assigns[:event].title
+      assert_nil flash[:error]
+      assert_redirected_to settings_event_path(assigns(:event))
+    end
+  end
+
 end

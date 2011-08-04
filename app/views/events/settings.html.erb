@@ -2,4 +2,12 @@
 
 <%=raw ajaxtrigger(:disable_event, "Event disabled", toggledisabled_event_path(@event), @event.disabled) %>
 
+<h2>Rename event</h2>
+<%= form_tag rename_event_path(@event) do %>
+  <%= label_tag 'title', 'New name:' %>
+  <%= text_field_tag 'title', @event.title %>
+  <%= awesome_submit_link 'Rename' %>
+<% end %>
+<br />
+
 <%= awesome_link "Delete this event description", event_path(@event.id), :confirm => "Really delete this event description with all its events?", :method => :delete %>

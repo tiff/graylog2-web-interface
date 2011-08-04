@@ -97,6 +97,7 @@ Graylog2WebInterface::Application.routes.draw do
       get :events
       get :settings
       post :toggledisabled
+      post :rename
     end
   end
 

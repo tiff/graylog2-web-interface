@@ -30,6 +30,19 @@ class EventsController < ApplicationController
   def settings
     @event = EventDescription.find_by_id(params[:id])
   end
+  
+  def rename
+    @event = EventDescription.find_by_id(params[:id])
+    @event.title = params[:title]
+
+    if @event.save
+      flash[:notice] = "Event has been renamed."
+    else
+      flash[:error] = "Could not rename event."
+    end
+
+    redirect_to settings_event_path(@event)
+  end
 
   def create
     @event_description = EventDescription.new(params[:event_description])

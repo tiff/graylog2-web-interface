@@ -49,7 +49,8 @@ authorization do
       :events,
       :settings,
       :toggledisabled,
-      :destroy
+      :destroy,
+      :rename
     ]
 
     has_permission_on :forwarders, :to => [:create, :destroy]
