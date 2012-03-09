@@ -5,7 +5,15 @@ general:
   allow_version_check: true # Enables manual (/versioncheck/index) and automatic (every 30min from overview page) version checking against graylog2.org via HTTP. 
   # custom_cookie_name: graylog2_staging1 # Set an own cookie name - Useful for multiple deployments on same host like example.org/staging1/graylog2, example.org/staging2/graylog2
 
-# Settings for stream subscription emails. 
+# Settings for ldap base user authentication
+ldap:
+  enabled: false
+  host: ldap.mycompany.com
+  encryption: start_tls
+  port: 389
+  base: ou=People,dc=mycompany,dc=com
+
+# Settings for stream subscription emails.
 subscriptions:
   from: graylog2subscriptions@example.org
   subject: "[graylog2] Subscription"
