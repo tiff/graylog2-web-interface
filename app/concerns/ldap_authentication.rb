@@ -33,7 +33,7 @@ module LdapAuthentication
     private
     # Returns a single Net::LDAP::Entry or false
     def ldap_login(login, password)
-      ldap_session       = new_ldap_session(login, password)
+      ldap_session       = new_ldap_session
       authenticated_user = ldap_session.bind_as({ :base     => ::Configuration.ldap_base,
                                                   :filter   => "(#{::Configuration.ldap_username_attr}=#{ login })",
                                                   :password => password })
@@ -41,17 +41,11 @@ module LdapAuthentication
       authenticated_user ? authenticated_user.first : false
     end
 
-    def new_ldap_session(login, password)
+    def new_ldap_session
       Net::LDAP.new(:host       => ::Configuration.ldap_host,
                     :port       => ::Configuration.ldap_port,
                     :encryption => ::Configuration.ldap_encryption.try(:to_sym),
-                    :base       => ::Configuration.ldap_base,
-                    :auth => {
-                        :username => "#{::Configuration.ldap_bind_domain_name}\\#{login}",
-                        :password => password,
-                        :method => :simple
-                      }
-                    )
+                    :base       => ::Configuration.ldap_base)
     end
 
   end
