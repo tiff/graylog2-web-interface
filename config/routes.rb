@@ -143,6 +143,8 @@ Graylog2WebInterface::Application.routes.draw do
     end
   end
 
+  resources :messagefilters
+
   resources :systemsettings do
     collection do
       post :allow_usage_stats
