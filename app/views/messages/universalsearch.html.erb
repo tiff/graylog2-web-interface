@@ -4,10 +4,16 @@
 
 <h1>
 	Search result for <span class="highlighted"><%= params[:query] %></span>
-	<% if @stream %>
-		in stream <span class="highlighted"><%= @stream.title %></span>.
-	<% end %>
+	<% if @stream %>in stream <span class="highlighted"><%= @stream.title %></span><% end %>
+	<% if @host %>for host <span class="highlighted"><%= @host.host %></span><% end %>
 </h1>
+
+<% unless @messages.total_result_count.blank? %>
+  Search hit <span class="highlighted"><%= number_with_delimiter(@messages.total_result_count, :delimiter => '.')  %></span> messages.
+<% end %>
+
+<%= render :partial => "result_graph" %>
+<br />
 
 <%= render :partial => "messages/table", :locals => { :messages => @messages,
                                                     :total_messages => @messages.total_result_count, 

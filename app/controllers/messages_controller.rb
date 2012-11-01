@@ -139,18 +139,24 @@
   end
 
   def universalsearch
-    if !params[:stream_id].blank?
-      @stream = Stream.find(params[:stream_id])
-    end
+    @stream = Stream.find(params[:stream_id]) if !params[:stream_id].blank?
+    @host = Host.find(:first, :conditions => {:host=> params[:host]}) if !params[:host].blank?
 
     block_access_for_non_admins if @stream and !@stream.accessable_for_user?(current_user)
+    block_access_for_non_admins if @host and !current_user.admin?
 
     @has_sidebar = true
     @has_universalsearch = true
     @load_flot = true
     @use_backtotop = true
     
-    @messages = MessageGateway.universal_search(params[:page], params[:query], :stream => @stream)
+    begin
+      @messages = MessageGateway.universal_search(params[:page], params[:query], :stream => @stream, :host => @host)
+    rescue Tire::Search::SearchRequestFailed
+      @messages = MessageResult.new
+      @messages.total_result_count = 0
+      flash[:error] = "Search request failed. Did you forget to escape Lucene syntax?"
+    end
   end
 
 end
